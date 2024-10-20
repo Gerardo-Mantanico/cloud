@@ -1,0 +1,106 @@
+.container-login {
+  z-index: 1;
+}
+
+.logo-cloud-arch {
+  border-radius: 50%;
+}
+
+.login-background {
+  min-height: 100vh;
+  background: rgb(255, 49, 49);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 49, 49, 1) 10%,
+    rgba(255, 255, 255, 1) 100%
+  );
+
+  position: relative;
+}
+
+.login-background--blur {
+  backdrop-filter: blur(100px);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-card:hover {
+  box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.74);
+  transform: scale(1.01);
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-icon {
+  animation: spinner 1.5s linear infinite;
+  margin-left: 5px;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip-path: circle(0);
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+  white-space: nowrap;
+}
+
+/* Directory tree */
+
+.directory {
+  font-size: 16px;
+  color: white;
+  user-select: none;
+  padding: 20px;
+}
+
+.directory .tree,
+.directory .tree-node,
+.directory .tree-node-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.directory .tree-branch-wrapper,
+.directory .tree-node__leaf {
+  outline: none;
+  outline: none;
+}
+
+.directory .tree-node {
+  cursor: pointer;
+}
+
+.directory .tree-node:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.directory .tree .tree-node--focused {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.directory .tree .tree-node--selected {
+  background: rgba(48, 107, 176);
+}
+
+.directory .tree-node__branch {
+  display: block;
+}
+
+.directory .icon {
+  vertical-align: middle;
+  padding-right: 5px;
+}
