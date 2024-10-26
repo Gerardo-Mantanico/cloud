@@ -2,17 +2,19 @@
   z-index: 1;
 }
 
-.logo-cloud-arch {
-  border-radius: 50%;
+.logo-cloud {
+  border-radius: 70%;
 }
 
 .login-background {
   min-height: 100vh;
-  background: rgb(255, 49, 49);
+  background: rgb(0, 0, 0); /* Color de fondo negro */
+
   background: linear-gradient(
     0deg,
-    rgba(255, 49, 49, 1) 10%,
-    rgba(255, 255, 255, 1) 100%
+    rgba(0, 0, 0, 1) 10%,
+    /* Negro en la parte superior */ rgba(0, 0, 0, 1) 100%
+      /* Negro en la parte inferior para que sea uniforme */
   );
 
   position: relative;
@@ -61,7 +63,7 @@
 
 .directory {
   font-size: 16px;
-  color: white;
+  color: white; /* Puedes cambiar esto si deseas otro color para el texto */
   user-select: none;
   padding: 20px;
 }
@@ -76,7 +78,6 @@
 
 .directory .tree-branch-wrapper,
 .directory .tree-node__leaf {
-  outline: none;
   outline: none;
 }
 

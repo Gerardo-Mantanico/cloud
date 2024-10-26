@@ -15,15 +15,22 @@ export const NavBar = () => {
       overflow: "auto",
     }} dark>
       <NavLink to="/" className="ps-2 me-auto navbar-brand">
-        <img width="40px" src={logo} className="mx-2 logo-cloud-arch" />
-        Cloud Arch
+        <img width="40px" src={logo} className="mx-2 logo-cloud"/>
+        Cloud Grafile
       </NavLink>
       <div className="px-3">
-        <p>
-          {user
-            ? `${user.email} - ${user.first_name} ${user.last_name}`
-            : ""}
-        </p>
+      <p>
+  {user ? (
+        <>
+          {user.email} 
+          <br />
+          {user.first_name} {user.last_name}
+          
+        </>
+      ) : (
+        ""
+      )}
+    </p>
         <p>
           {user ? `${user.is_admin ? "(Administrador)" : ""}` : ""}
         </p>

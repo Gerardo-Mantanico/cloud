@@ -21,15 +21,15 @@ import { services } from './services/index.js'
 
 const app = express(feathers())
 
-// Load app configuration
+// cargar la configuración de la aplicación
 app.configure(configuration(configurationValidator))
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
-// Host the public folder
+// Aloja la carpeta pública
 app.use('/', serveStatic(app.get('public')))
 
-// Configure services and real-time functionality
+// Configurar servicios y funcionalidad en tiempo real
 app.configure(rest())
 
 app.configure(mongodb)
@@ -38,11 +38,11 @@ app.configure(authentication)
 
 app.configure(services)
 
-// Configure a middleware for 404s and the error handler
+// Configurar un middleware para 404 y el controlador de errores
 app.use(notFound())
 app.use(errorHandler({ logger }))
 
-// Register hooks that run on all service methods
+//Registra ganchos que se ejecutan en todos los métodos de servicio
 app.hooks({
   around: {
     all: [logError]
@@ -51,7 +51,7 @@ app.hooks({
   after: {},
   error: {}
 })
-// Register application setup and teardown hooks here
+//Registre los ganchos de configuración y desmontaje de la aplicación aquí
 app.hooks({
   setup: [],
   teardown: []

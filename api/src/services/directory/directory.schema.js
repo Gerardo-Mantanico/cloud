@@ -59,8 +59,8 @@ export const directoryQueryProperties = Type.Pick(directorySchema, [
   '_id',
   'name',
   'parent_id',
-  'owner',
-  'is_trash'
+  'owner', //due;o
+  'is_trash' // es basura
 ])
 export const directoryQuerySchema = Type.Intersect(
   [

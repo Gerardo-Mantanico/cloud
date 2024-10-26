@@ -1,7 +1,7 @@
 import { checkContext, getItems } from 'feathers-hooks-common'
 import { BadRequest } from '@feathersjs/errors'
 
-const EXTENSIONS = ['html', 'txt']
+const EXTENSIONS = ['html', 'txt','png','jpg']
 
 export const validateExtensions =
   (options = {}) =>

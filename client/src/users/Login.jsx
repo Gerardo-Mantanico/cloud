@@ -33,13 +33,12 @@ export const Login = () => {
       <div className="login-background--blur" />
       <SmallContainer loading={status === "loading"} className="container-login">
         <div className="d-flex flex-column justify-content-center align-items-center p-4 col-10 col-md-6 col-lg-4 mx-auto rounded bg-white shadow">
-          <img src={logo} alt="logo" width="200px" className="logo-cloud-arch" />
+          <img src={logo} alt="logo" width="200px" className="logo-cloud" />
           <Form
             onSubmit={onSubmit}
             validate={validateForm}
             render={({ handleSubmit, form, submitting, pristine }) => (
               <form onSubmit={handleSubmit}>
-                <h1>hola</h1>
                 <div className="row mb-3">
                   <div className="col-12">
                     <Field
@@ -68,7 +67,7 @@ export const Login = () => {
                 ) : null}
                 <div className="d-flex align-items-center justify-content-center">
                   <Button
-                    color="primary"
+                    color="dark"
                     type="submit"
                     disabled={submitting}
                     block

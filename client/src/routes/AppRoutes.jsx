@@ -22,6 +22,7 @@ export const AppRoutes = () => {
   const user = useUser();
   return (
     <Routes>
+      <Route element={<FormUsers />} path="/usuarios/nuevo" exact />
       <Route element={user ? <Navigate to="/" /> : <Login />} path="/login" exact />
       <Route element={<PrivateRoutes />} >
         <Route element={<Home />} path="/" exact />

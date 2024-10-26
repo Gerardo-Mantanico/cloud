@@ -141,8 +141,10 @@ const FolderIcon = ({ isOpen }) =>
 const FileIcon = ({ extension }) => {
   let fileIconClass = "";
   switch (extension) {
-    case "html": fileIconClass = "bi bi-filetype-html"; break;
     case "txt": fileIconClass = "bi bi-filetype-txt"; break;
+    case "png": fileIconClass = "bi bi-filetype-txt"; break;
+    case "jpg": fileIconClass = "bi bi-filetype-txt"; break;
+    case "html": fileIconClass = "bi bi-filetype-html"; break;
     default: fileIconClass = "bi bi-file-earmark";
   }
   return <i className={fileIconClass} />

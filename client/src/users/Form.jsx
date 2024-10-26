@@ -87,7 +87,7 @@ export const FormUsers = () => {
   };
 
   return (
-    <SmallContainer className="mt-5 d-flex flex-column align-items-center justify-content-center" loading={loading}>
+    <SmallContainer className="mt-5 d-flex flex-column align-items-center justify-content-center " loading={loading}>
       <h3>{`${id ? "Editar" : "Crear"} usuario`} </h3>
       <Form
         initialValues={initialValues}

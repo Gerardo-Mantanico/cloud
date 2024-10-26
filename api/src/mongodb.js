@@ -1,5 +1,6 @@
-// For more information about this file see https://dove.feathersjs.com/guides/cli/databases.html
+// conexion db
 import { MongoClient } from 'mongodb'
+
 
 export const mongodb = (app) => {
   const connection = app.get('mongodb')
