@@ -9,7 +9,7 @@ const options = {
 };
 export const app = feathers();
 
-const restClient = rest("http://localhost:3030").fetch(
+const restClient = rest("http://localhost:3002/").fetch(
   window.fetch.bind(window),
   {
     headers: {

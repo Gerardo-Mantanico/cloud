@@ -6,7 +6,7 @@ services:
       - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
-        - MONGO_INITDB_ROOT_PASSWORD=root123
+      - MONGO_INITDB_ROOT_PASSWORD=root123
     volumes:
       - ./mongo_data:/data/db
     networks:
@@ -16,7 +16,7 @@ services:
     build: ./api
     container_name: api
     ports:
-      - "3000:3000"
+      - "3002:3030"
     environment:
       MONGO_URI: mongodb://root:root123@mongodb:27017/cloud-grafile?authSource=admin
     networks:
@@ -28,12 +28,14 @@ services:
     build: ./client
     container_name: frontend
     ports:
-      - "4000:4000"
+      - "4000:80"
     networks:
       - app-network
+    depends_on:
+      - app
 
 volumes:
-  mongo-data:
+  mongo_data:
 
 networks:
   app-network:

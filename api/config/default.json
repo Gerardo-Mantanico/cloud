@@ -1,15 +1,15 @@
 {
-  "host": "localhost",
+  "host": "app",
   "port": 3030,
   "public": "./public/",
   "origins": [
-    "http://localhost:3030"
+    "http://app:3030"
   ],
   "paginate": {
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://root:root123@localhost:27017/cloud-Grafile?authMechanism=DEFAULT&tls=false&authSource=admin",
+  "mongodb": "mongodb://root:root123@mongodb:27017/cloud-grafile?authSource=admin",
   "authentication": {
     "entity": "user",
     "service": "users",

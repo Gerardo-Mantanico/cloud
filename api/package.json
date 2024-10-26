@@ -30,9 +30,8 @@
   "main": "lib/index",
   "type": "module",
   "scripts": {
-    "start": "node src",
-    "dev": "nodemon src/",
-    "prettier": "npx prettier \"**/*.js\" --write",
+    "start": "node src/index.js",  
+    "dev": "nodemon src/index.js",  
     "mocha": "cross-env NODE_ENV=test mocha test/ --recursive --exit",
     "test": "npm run mocha",
     "bundle:client": "npm pack --pack-destination ./public"
@@ -61,6 +60,7 @@
     "@feathersjs/rest-client": "^5.0.11",
     "axios": "^1.6.0",
     "cross-env": "^7.0.3",
+    "cors": "^2.8.5",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3"
