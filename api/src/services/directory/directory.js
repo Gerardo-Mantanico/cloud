@@ -25,13 +25,13 @@ export const directoryMethods = ['find', 'get', 'create', 'patch', 'remove', 'up
 export * from './directory.class.js'
 export * from './directory.schema.js'
 
-// A configure function that registers the service and its hooks via `app.configure`
+// Una función de configuración que registra el servicio y sus ganchos z
 export const directory = (app) => {
-  // Register our service on the Feathers application
+  // Registra nuestro servicio en la aplicación Feathers
   app.use(directoryPath, new DirectoryService(getOptions(app)), {
-    // A list of all methods this service exposes externally
+    //Una lista de todos los métodos que este servicio expone externamente
     methods: directoryMethods,
-    // You can add additional custom events to be sent to clients here
+    //Puedes agregar eventos personalizados adicionales para enviar a los clientes aquí
     events: []
   })
   // Initialize hooks

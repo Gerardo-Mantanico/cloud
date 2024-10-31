@@ -27,15 +27,21 @@ export const FileFormModal = ({
   edit = false,
   view = false,
   id,
+  parentId,
 }) => {
   const [initialValues, setInitialValues] = useState({ extension: "txt" });
+  const [imageURL, setImageURL] = useState(""); // Estado para almacenar la URL de la imagen
 
   useEffect(() => {
     (async () => {
       if (!id) return;
       try {
-        const result = id ? await fileService.get(id) : {};
+        const result = await fileService.get(id);
         setInitialValues(result);
+        // Si el resultado ya tiene contenido de imagen, configurar la URL
+        if (result.extension === "png" || result.extension === "jpg") {
+          setImageURL(result.content); // Suponiendo que "content" contiene la URL de la imagen
+        }
       } catch (error) {
         setInitialValues({ extension: "html" });
       }
@@ -51,10 +57,13 @@ export const FileFormModal = ({
             initialValues={initialValues}
             validate={validateForm}
             onSubmit={(data) => {
+              const fileData = { ...data, parent_id: parentId };
+              console.log("parentId:", parentId);
+
               if (id) {
-                updateFile(id, data, loadData);
+                updateFile(id, fileData, loadData);
               } else {
-                createFile(data, loadData);
+                createFile(fileData, loadData);
               }
               toggle();
             }}
@@ -66,8 +75,8 @@ export const FileFormModal = ({
                       <Field
                         name="name"
                         render={InputField}
-                        placeholder="directorio"
-                        label="Directorio"
+                        placeholder="Nombre del archivo"
+                        label="Nombre"
                         validate={fileNameRegexValidator}
                         readOnly={view}
                       />
@@ -91,7 +100,6 @@ export const FileFormModal = ({
                   <div className="row mb-3">
                     <div className="col-12">
                       {["png", "jpg"].includes(values.extension) ? (
-                        // Mostrar input de archivo solo si la extensión es png o jpg
                         <Field
                           name="content"
                           render={({ input, meta }) => (
@@ -103,7 +111,12 @@ export const FileFormModal = ({
                                 onChange={(e) => {
                                   const file = e.target.files[0];
                                   if (file) {
-                                    input.onChange(file.name); // Guarda el nombre del archivo
+                                    const reader = new FileReader();
+                                    reader.onloadend = () => {
+                                      setImageURL(reader.result); // Almacena la URL de la imagen
+                                      input.onChange(file.name); // También almacena el contenido
+                                    };
+                                    reader.readAsDataURL(file); // Lee el archivo como Data URL
                                   }
                                 }}
                                 readOnly={view}
@@ -115,7 +128,6 @@ export const FileFormModal = ({
                           )}
                         />
                       ) : (
-                        // Mostrar campo de texto enriquecido si la extensión no es png o jpg
                         <Field
                           name="content"
                           render={InputFieldCode}
@@ -126,6 +138,18 @@ export const FileFormModal = ({
                       )}
                     </div>
                   </div>
+
+                  {/* Mostrar la imagen cargada si existe */}
+                  {imageURL && (
+                    <div className="mb-3">
+                      <img
+                        src={imageURL}
+                        alt="Imagen cargada"
+                        style={{ maxWidth: "100%", height: "auto" }} // Estilos para la imagen
+                      />
+                    </div>
+                  )}
+
                   <Button
                     color="primary"
                     type="submit"

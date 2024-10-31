@@ -13,7 +13,7 @@ const restClient = rest("http://localhost:3002/").fetch(
   window.fetch.bind(window),
   {
     headers: {
-      Authorization: window.localStorage.getItem(STORAGE_KEY),
+      Authorization: window.localStorage.getItem(STORAGE_KEY), //token de acceso
     },
   },
 );

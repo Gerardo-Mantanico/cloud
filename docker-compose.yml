@@ -15,9 +15,12 @@ services:
   app:
     build: ./api
     container_name: api
+    volumes:
+      - ./api:/app
     ports:
       - "3002:3030"
     environment:
+      NODE_ENV: development
       MONGO_URI: mongodb://root:root123@mongodb:27017/cloud-grafile?authSource=admin
     networks:
       - app-network
@@ -33,6 +36,9 @@ services:
       - app-network
     depends_on:
       - app
+    environment:
+      NODE_ENV: development # Puedes mantener tus variables de entorno existentes
+      # Otras variables de entorno
 
 volumes:
   mongo_data:

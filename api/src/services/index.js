@@ -11,5 +11,5 @@ export const services = (app) => {
 
   app.configure(user)
 
-  // All services will be registered here
+// Todos los servicios quedarán registrados aquí
 }

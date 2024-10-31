@@ -1,6 +1,6 @@
 import { MongoDBService } from '@feathersjs/mongodb'
 
-// By default calls the standard MongoDB adapter service methods but can be customized with your own functionality.
+//UserService es una clase que extiende MongoDBService. Esto permite que el servicio herede los métodos estándar de Feathers para realizar operaciones en la base de datos, como find, get, create, update, patch, y remove. 
 export class UserService extends MongoDBService {}
 
 export const getOptions = (app) => {

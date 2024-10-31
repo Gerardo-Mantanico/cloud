@@ -10,7 +10,10 @@ export const fileSchema = Type.Object(
     _id: ObjectIdSchema(),
     name: Type.RegEx(/^[a-zA-Z0-9_-]+(\(\d+\))*$/),
     extension: Type.String(),
-    content: Type.String(),
+    content: Type.Union([
+      Type.String(), // Para texto
+      Type.Any() // Para archivos binarios
+    ]),
     createdAt: Type.Number(),
     updatedAt: Type.Number(),
     parent_id: Type.Optional(ObjectIdSchema()),
@@ -64,14 +67,14 @@ export const fileDataResolver = resolve({
   })
 })
 
-// Schema for updating existing entries
+// Esquema para actualizar entradas existentes
 export const filePatchSchema = Type.Partial(fileSchema, {
   $id: 'FilePatch'
 })
 export const filePatchValidator = getValidator(filePatchSchema, dataValidator)
 export const filePatchResolver = resolve({})
 
-// Schema for allowed query properties
+//Esquema para propiedades de consulta permitidas
 export const fileQueryProperties = Type.Pick(fileSchema, [
   '_id',
   'name',
@@ -92,7 +95,8 @@ export const fileQuerySchema = Type.Intersect(
         $exists: Type.Boolean()
       }
     }),
-    // Add additional query properties here
+
+    // Agregue propiedades de consulta adicionales aquí
     Type.Object(
       {
         keepParent: Type.Optional(Type.Boolean())
